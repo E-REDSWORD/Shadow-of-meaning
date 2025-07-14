@@ -77,6 +77,49 @@
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col items-center py-8 px-4">
 
+      /* تنسيقات نافذة كلمة المرور */
+<div id="loginPage" style="direction:rtl;background:linear-gradient(135deg,#1a2a6c,#b21f1f);height:100vh;display:flex;justify-content:center;align-items:center;position:fixed;top:0;left:0;width:100%;z-index:1000;">
+  <div style="background:rgba(0,0,0,0.8);padding:40px;border-radius:15px;box-shadow:0 15px 25px rgba(0,0,0,0.5);width:90%;max-width:400px;text-align:center;border:1px solid rgba(255,255,255,0.1);">
+    <h1 style="color:#fff;font-size:2rem;margin-bottom:10px;text-shadow:0 0 10px rgba(255,0,0,0.7);">𖤍 | 𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃</h1>
+    <p style="color:#f8f8f8;margin-bottom:30px;">لعبة ظل المعنى</p>
+    
+    <div style="position:relative;margin-bottom:25px;">
+      <input id="loginPassword" type="password" placeholder="كلمة المرور" style="width:100%;padding:12px 15px 12px 40px;background:rgba(255,255,255,0.1);border:none;border-radius:25px;color:#fff;font-size:16px;border:2px solid transparent;transition:all 0.3s;">
+      <i class="fas fa-lock" style="position:absolute;right:15px;top:50%;transform:translateY(-50%);color:#ff0000;"></i>
+    </div>
+    
+    <button onclick="checkPassword()" style="width:100%;padding:12px;background:linear-gradient(45deg,#ff0000,#ff7300);border:none;border-radius:25px;color:white;font-size:16px;cursor:pointer;transition:all 0.3s;">الدخول إلى اللعبة</button>
+    
+    <p id="loginError" style="color:#ff5555;margin-top:15px;display:none;">كلمة المرور غير صحيحة!</p>
+    <p style="color:rgba(255,255,255,0.6);margin-top:20px;font-size:14px;"> : مقفلة للحفاظ على سرية الاجابات</p>
+  </div>
+</div>
+
+<script>
+  function checkPassword() {
+    const password = document.getElementById('loginPassword').value;
+    const errorElement = document.getElementById('loginError');
+    
+    if (password === '998877') {
+      document.getElementById('loginPage').style.display = 'none';
+      document.getElementById('registration').style.display = 'block';
+    } else {
+      errorElement.style.display = 'block';
+      document.getElementById('loginPassword').style.border = '2px solid #ff0000';
+      setTimeout(() => {
+        errorElement.style.display = 'none';
+      }, 3000);
+    }
+  }
+  
+  // للسماح بالدخول عند الضغط على Enter
+  document.getElementById('loginPassword').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      checkPassword();
+    }
+  });
+</script>
+  
   <!-- شعار وعنوان الموقع -->
   <header class="w-full max-w-2xl mb-8 text-center">
     <h1 class="text-5xl font-extrabold text-red-600 mb-2 drop-shadow-lg">𖤍|𝐑𝐄𝐃𝐒𝐖𝐎𝐑𝐃🇦🇷</h1>
